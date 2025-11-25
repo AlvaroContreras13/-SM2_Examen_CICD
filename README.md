@@ -148,7 +148,7 @@ SM2_Examen_CICD/
 ### Examen 2: Pipeline CI/CD Completo
 
 #### 1. Pruebas Unitarias Exitosas (24/24 passed)
-![tests](evidencia/ci-tests.png)
+![tests](evidencia/5p.png)
 
 **Resultado:** ✅ **24 tests passed** (100%)
 - 19 tests del proyecto original
@@ -184,7 +184,7 @@ SM2_Examen_CICD/
 - **Tests pasados:** 24 (100%)
 - **Tests fallidos:** 0
 - **Análisis de código:** ✅ Completado
-- **APK generado:** ✅ Sí (12.5 MB)
+- **APK generado:** ✅ Sí 
 - **Artifact disponible:** ✅ Sí
 
 ---
@@ -201,10 +201,6 @@ flutter pub get
 flutter test test/main_test.dart
 ```
 
-### Analizar código
-```bash
-flutter analyze
-```
 
 ### Construir APK localmente
 ```bash
@@ -244,28 +240,28 @@ flutter test test/main_test.dart
 # 3. Construcción del APK
 flutter build apk --release
 
-# 5. Upload del artifact
+# 4. Upload del artifact
 # (automático via GitHub Actions)
 ```
 
 ---
 
-## ✅ Conclusiones
+## Conclusiones
 
 Se implementó exitosamente un **pipeline completo de DevOps** para aplicaciones móviles que:
 
 ### Examen 1: Automatización de Calidad
-- ✅ Valida la calidad del código automáticamente
-- ✅ Ejecuta pruebas unitarias en cada commit
-- ✅ Garantiza estándares de código
-- ✅ Previene integración de código con errores
+- Valida la calidad del código automáticamente
+- Ejecuta pruebas unitarias en cada commit
+- Garantiza estándares de código
+- Previene integración de código con errores
 
 ### Examen 2: CI/CD Completo
-- ✅ Todo lo anterior +
-- ✅ **Construye el APK automáticamente**
-- ✅ **Genera artifacts descargables**
-- ✅ **Listo para distribución inmediata**
-- ✅ **Proceso 100% automatizado**
+- Todo lo anterior +
+- **Construye el APK automáticamente**
+- **Genera artifacts descargables**
+- **Listo para distribución inmediata**
+- **Proceso 100% automatizado**
 
 ---
 

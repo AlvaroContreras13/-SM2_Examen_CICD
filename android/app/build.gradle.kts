@@ -7,8 +7,8 @@ plugins {
 
 android {
     namespace = "com.example.movuni"
-    compileSdk = 34  
-    ndkVersion = "27.0.12077973"  
+    compileSdk = 35  
+    ndkVersion = "27.0.12077973"
     
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -22,11 +22,11 @@ android {
     
     defaultConfig {
         applicationId = "com.example.movuni"
-        minSdk = 23  
-        targetSdk = 34  
+        minSdk = 23
+        targetSdk = 35 
         versionCode = 1
         versionName = "1.0"
-        multiDexEnabled = true  
+        multiDexEnabled = true
     }
     
     buildTypes {
