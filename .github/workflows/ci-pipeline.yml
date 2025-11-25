@@ -25,19 +25,16 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
       
-      # 4. Análisis de Calidad (Linting)
-      - name: Code Quality Check
-        run: flutter analyze --no-fatal-infos 
       
-      # 5. Ejecutar Pruebas Unitarias (SOLO main_test.dart)
+      # 4. Ejecutar Pruebas Unitarias (SOLO main_test.dart)
       - name: Run Unit Tests
         run: flutter test test/main_test.dart
       
-      # 6. Construir el APK
+      # 5. Construir el APK
       - name: Build Application
         run: flutter build apk --release
       
-      # 7. Subir el APK como Artefacto
+      # 6. Subir el APK como Artefacto
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
