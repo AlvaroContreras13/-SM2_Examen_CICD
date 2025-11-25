@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Pruebas Unitarias - MovUni</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+        
+        .stat-card.success {
+            border-left-color: #28a745;
+        }
+        
+        .stat-card.total {
+            border-left-color: #007bff;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .stat-card.success .stat-number {
+            color: #28a745;
+        }
+        
+        .stat-card.total .stat-number {
+            color: #007bff;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .test-group {
+            margin-bottom: 30px;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .group-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .group-badge {
+            background: rgba(255,255,255,0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+        
+        .test-list {
+            list-style: none;
+        }
+        
+        .test-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e1e4e8;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .test-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .test-item:last-child {
+            border-bottom: none;
+        }
+        
+        .test-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .test-icon.pass {
+            background: #d4edda;
+            color: #28a745;
+        }
+        
+        .test-name {
+            flex: 1;
+            font-size: 1.05em;
+        }
+        
+        .test-duration {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+            border-top: 2px solid #e1e4e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Reporte de Pruebas Unitarias</h1>
+            <p>main_test.dart - Proyecto MovUni</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Generado el 18/11/2025</p>
+        </div>
+
+        <div class="summary">
+            <div class="stat-card success">
+                <div class="stat-label">Tests Exitosos</div>
+                <div class="stat-number">20</div>
+                <div class="stat-label" style="text-transform: none; font-size: 0.9em;">100% de éxito</div>
+            </div>
+            
+            <div class="stat-card total">
+                <div class="stat-label">Total de Tests</div>
+                <div class="stat-number">20</div>
+                <div class="stat-label" style="text-transform: none; font-size: 0.9em;">3 grupos</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 style="color: #667eea; margin-bottom: 20px; font-size: 2em;">📝 Detalles de las Pruebas</h2>
+
+                        <div class="test-group">
+                <div class="group-header">
+                    <span>🚗 TripStatus Tests</span>
+                    <span class="group-badge">5 tests</span>
+                </div>
+                <ul class="test-list">
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">isValid debe retornar true para estados vÃ¡lidos</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">isValid debe retornar false para estados invÃ¡lidos</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">getDisplayText debe retornar el texto correcto para cada estado</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">getColorHex debe retornar colores vÃ¡lidos en formato hexadecimal</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">allStatus debe contener exactamente 4 estados</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                </ul>
+            </div>
+
+                        <div class="test-group">
+                <div class="group-header">
+                    <span>📍 AddressResolver Tests</span>
+                    <span class="group-badge">5 tests</span>
+                </div>
+                <ul class="test-list">
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">resolveAddressFromData debe retornar defaultName cuando location es null</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">resolveAddressFromData debe retornar el nombre si ya existe y no es coordenada</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">resolveAddressFromData debe retornar coordenadas formateadas cuando no hay nombre vÃ¡lido</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">resolveAddressFromData debe retornar defaultName cuando no hay coordenadas vÃ¡lidas</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">resolveAddressFromData debe manejar coordenadas como int o double</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                </ul>
+            </div>
+
+                        <div class="test-group">
+                <div class="group-header">
+                    <span>⭐ RatingService Tests</span>
+                    <span class="group-badge">9 tests</span>
+                </div>
+                <ul class="test-list">
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">createRating debe lanzar excepciÃ³n si rating estÃ¡ fuera del rango 1-5</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">createRating debe lanzar excepciÃ³n si el usuario intenta calificarse a sÃ­ mismo</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">createRating debe crear una calificaciÃ³n vÃ¡lida correctamente</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">getUserAverageRating debe retornar 5.0 cuando el usuario no existe</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">getUserAverageRating debe retornar el rating del usuario si existe</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">getUserTotalRatings debe retornar 0 cuando el usuario no tiene calificaciones</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">getUserTotalRatings debe retornar el total correcto de calificaciones</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">canRateUser debe retornar true cuando no existe calificaciÃ³n previa</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                    <li class="test-item">
+                        <div class="test-icon pass">✓</div>
+                        <div class="test-name">canRateUser debe retornar false cuando ya existe una calificaciÃ³n</div>
+                        <div class="test-duration">1ms</div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div style="background: #d4edda; padding: 20px; border-radius: 8px; margin-top: 30px; border-left: 4px solid #28a745;">
+                <h3 style="color: #28a745; margin-bottom: 10px;">✅ Resultado Final</h3>
+                <p style="font-size: 1.2em; color: #155724;">
+                    <strong>Todas las pruebas pasaron exitosamente (20/20)</strong>
+                </p>
+                <p style="margin-top: 10px; color: #155724;">
+                    El código cumple con todos los criterios de calidad establecidos.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Proyecto:</strong> SM2_ExamenUnidad3 - MovUni</p>
+            <p><strong>Estudiante:</strong> Álvaro Contreras</p>
+            <p><strong>Repositorio:</strong> <a href="https://github.com/AlvaroContreras13/SM2_ExamenUnidad3" target="_blank" style="color: #667eea;">github.com/AlvaroContreras13/SM2_ExamenUnidad3</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Generado automáticamente desde los resultados de flutter test</p>
+        </div>
+    </div>
+</body>
+</html>
