@@ -3,7 +3,6 @@
 **Curso:** Soluciones Móviles II  
 **Fecha:** 25/11/2025  
 **Estudiante:** Alvaro Javier Contreras Lipa  
-**Tecnología:** Flutter 3.29.0  
 **Repositorio:** https://github.com/AlvaroContreras13/-SM2_Examen_CICD
 
 ---
@@ -157,14 +156,14 @@ SM2_Examen_CICD/
 ---
 
 #### 2. Construcción del APK Exitosa
-![build](evidencia/ci-build.png)
+![build](evidencia/build.png)
 
 **Resultado:** ✅ APK generado en `build/app/outputs/flutter-apk/app-release.apk`
 
 ---
 
 #### 3. Artifact Descargable
-![artifact](evidencia/ci-artifact.png)
+![artifact](evidencia/artefacto.png)
 
 **Ubicación:** GitHub Actions → Artifacts → `app-release.apk`  
 **Disponible para descarga directa desde GitHub**
@@ -263,24 +262,6 @@ Se implementó exitosamente un **pipeline completo de DevOps** para aplicaciones
 - **Listo para distribución inmediata**
 - **Proceso 100% automatizado**
 
----
 
-## 📚 Referencias
 
-- [Flutter Documentation](https://flutter.dev/docs)
-- [GitHub Actions - Flutter](https://docs.github.com/en/actions)
-- [Flutter CI/CD Best Practices](https://flutter.dev/docs/deployment/cd)
-- [Firebase Authentication](https://firebase.google.com/docs/auth)
 
----
-
-## 🔗 Enlaces Útiles
-
-- **Repositorio:** https://github.com/AlvaroContreras13/-SM2_Examen_CICD
-- **GitHub Actions:** https://github.com/AlvaroContreras13/-SM2_Examen_CICD/actions
-- **Examen 1 (Quality Check):** [Ver workflow](https://github.com/AlvaroContreras13/-SM2_Examen_CICD/actions/workflows/quality-check.yml)
-- **Examen 2 (CI/CD Pipeline):** [Ver workflow](https://github.com/AlvaroContreras13/-SM2_Examen_CICD/actions/workflows/ci-pipeline.yml)
-
----
-
-**Fecha de entrega:** 25 de Noviembre, 2025
