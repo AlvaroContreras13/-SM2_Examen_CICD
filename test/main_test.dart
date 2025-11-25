@@ -4,7 +4,7 @@ import 'package:movuni/utils/address_resolver.dart';
 import 'package:movuni/services/rating_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
-
+import 'package:movuni/utils/validators.dart';
 void main() {
   // TESTS para TripStatus (constants/trip_status.dart)
   group('TripStatus Tests', () {
@@ -230,4 +230,93 @@ void main() {
       expect(canRate, false);
     });
   });
+
+// Test de nuevo examen 3ra unidad
+group('Validators Tests - Examen CI/CD', () {
+  test('1. Validar Email Institucional UPT', () {
+    // Casos válidos
+    expect(Validators.isValidInstitutionalEmail('alumno@virtual.upt.pe'), true);
+    expect(Validators.isValidInstitutionalEmail('juan.perez@virtual.upt.pe'), true);
+    expect(Validators.isValidInstitutionalEmail('test123@virtual.upt.pe'), true);
+    
+    // Casos inválidos
+    expect(Validators.isValidInstitutionalEmail('alumno@gmail.com'), false);
+    expect(Validators.isValidInstitutionalEmail('alumno@upt.pe'), false);
+    expect(Validators.isValidInstitutionalEmail('alumno@virtual.upt.edu.pe'), false);
+    expect(Validators.isValidInstitutionalEmail(''), false);
+    expect(Validators.isValidInstitutionalEmail('sin_arroba.com'), false);
+  });
+
+  test('2. Validar Contraseña Segura (mínimo 6 caracteres)', () {
+    // Casos válidos
+    expect(Validators.isSecurePassword('123456'), true);
+    expect(Validators.isSecurePassword('password'), true);
+    expect(Validators.isSecurePassword('MiClave2024'), true);
+    expect(Validators.isSecurePassword('abc123'), true);
+    
+    // Casos inválidos
+    expect(Validators.isSecurePassword('12345'), false);
+    expect(Validators.isSecurePassword('abc'), false);
+    expect(Validators.isSecurePassword(''), false);
+    expect(Validators.isSecurePassword('a'), false);
+  });
+
+  test('3. Validar DNI Peruano (8 dígitos)', () {
+    // Casos válidos
+    expect(Validators.isValidDNI('12345678'), true);
+    expect(Validators.isValidDNI('87654321'), true);
+    expect(Validators.isValidDNI('00000001'), true);
+    expect(Validators.isValidDNI(' 12345678 '), true); // Con espacios
+    
+    // Casos inválidos
+    expect(Validators.isValidDNI('1234567'), false); // 7 dígitos
+    expect(Validators.isValidDNI('123456789'), false); // 9 dígitos
+    expect(Validators.isValidDNI('1234567a'), false); // Contiene letra
+    expect(Validators.isValidDNI(''), false);
+    expect(Validators.isValidDNI('abcdefgh'), false);
+  });
+
+  test('4. Validar Teléfono Peruano (9 dígitos, inicia con 9)', () {
+    // Casos válidos
+    expect(Validators.isValidPeruvianPhone('987654321'), true);
+    expect(Validators.isValidPeruvianPhone('912345678'), true);
+    expect(Validators.isValidPeruvianPhone('999999999'), true);
+    expect(Validators.isValidPeruvianPhone('987 654 321'), true); // Con espacios
+    expect(Validators.isValidPeruvianPhone('987-654-321'), true); // Con guiones
+    
+    // Casos inválidos
+    expect(Validators.isValidPeruvianPhone('87654321'), false); // 8 dígitos
+    expect(Validators.isValidPeruvianPhone('1987654321'), false); // 10 dígitos
+    expect(Validators.isValidPeruvianPhone('887654321'), false); // No inicia con 9
+    expect(Validators.isValidPeruvianPhone(''), false);
+    expect(Validators.isValidPeruvianPhone('12345678'), false);
+  });
+
+  test('5. Validar Placa Vehicular Peruana (formato ABC-123 o ABC-1234)', () {
+    // Casos válidos - Formato antiguo (ABC-123)
+    expect(Validators.isValidLicensePlate('ABC-123'), true);
+    expect(Validators.isValidLicensePlate('XYZ-999'), true);
+    expect(Validators.isValidLicensePlate('abc-123'), true); // Minúsculas (se convierte)
+    
+    // Casos válidos - Formato nuevo (ABC-1234)
+    expect(Validators.isValidLicensePlate('ABC-1234'), true);
+    expect(Validators.isValidLicensePlate('XYZ-9999'), true);
+    expect(Validators.isValidLicensePlate(' ABC-1234 '), true); // Con espacios
+    
+    // Casos inválidos
+    expect(Validators.isValidLicensePlate('AB-123'), false); // 2 letras
+    expect(Validators.isValidLicensePlate('ABCD-123'), false); // 4 letras
+    expect(Validators.isValidLicensePlate('ABC-12'), false); // 2 números
+    expect(Validators.isValidLicensePlate('ABC-12345'), false); // 5 números
+    expect(Validators.isValidLicensePlate('ABC123'), false); // Sin guion
+    expect(Validators.isValidLicensePlate('123-ABC'), false); // Orden invertido
+    expect(Validators.isValidLicensePlate(''), false);
+  });
+});
+
+
+
+
+
+
 }
